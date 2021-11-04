@@ -1,8 +1,6 @@
 class RelationshipsController < ApplicationController
     
-    def show
-    end
-    
+        
     def create
         follower = current_user.relationships.build(followed_id: params[:user_id])
         follower.save

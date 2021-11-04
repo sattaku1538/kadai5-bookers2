@@ -12,9 +12,13 @@
   <!--↓フォローの記述-->
   <tr>
 
-    <th><%= link_to user.followers.count, follower_user_path(user) %>フォロー</th>
-    <th><%= link_to user.followeds.count, followed_user_path(user) %>フォロワー</th>
-        
+    <tr>
+    <th><%= link_to user.followers.count, follower_user_path(user) %>: follows</th>
+    </tr>
+    <tr>
+    <th><%= link_to user.followeds.count, followed_user_path(user) %>: followers</th>
+    </tr>
+    <tr>
     <th>
       <% if user.id == current_user.id %>
       <% else %>
@@ -29,7 +33,7 @@
       <% end %>
       <% end %>
     </th>
-    
+    </tr>
   </tr>
 </table>
 

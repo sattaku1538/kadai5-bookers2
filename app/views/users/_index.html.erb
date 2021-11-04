@@ -14,8 +14,8 @@
         <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
         
         <!--↓フォロー機能-->
-        <td><%= link_to user.followers.count, follower_user_path(user) %>フォロー</td>
-        <td><%= link_to user.followeds.count, followed_user_path(user) %>フォロワー</td>
+        <td><%= link_to user.followers.count, follower_user_path(user) %>: follows</td>
+        <td><%= link_to user.followeds.count, followed_user_path(user) %>: followers</td>
         
         <% if user == current_user %>
         <!--<p class="lead text-muted">You're currently signed in as %= current_user.email %></p>-->

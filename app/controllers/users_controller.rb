@@ -16,17 +16,17 @@ class UsersController < ApplicationController
     # ↑この記述はログインしていないユーザー全ての情報を引っ張る記述
   end
   
-  # ↓フォロワー機能
+  # ↓フォロワーする側の機能
   def follower
-    user = User.find(params[:id])
-    @users = user.follower
+    @user = User.find(params[:id])
+    @follower = @user.followers
   end
 
   def followed
-    user = User.find(params[:id])
-    @users = user.followed
+    @user = User.find(params[:id])
+    @followed = @user.followeds
   end
-  # ↑フォロワー機能
+  # ↑フォロワーされる側の機能
 
   def edit
     @user = User.find(params[:id])
