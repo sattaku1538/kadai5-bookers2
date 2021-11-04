@@ -12,6 +12,31 @@
         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
         <td><%= user.name %></td>
         <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
+        
+        <!--↓フォロー機能-->
+        <td><%= link_to user.followers.count, follower_user_path(user) %>フォロー</td>
+        <td><%= link_to user.followeds.count, followed_user_path(user) %>フォロワー</td>
+        
+        <% if user == current_user %>
+        <!--<p class="lead text-muted">You're currently signed in as %= current_user.email %></p>-->
+        <% else %>
+        
+        <% if user.follower_by?(current_user) %>
+  
+        <td>
+        <%= link_to user_relationships_path(user), method: :delete do %>
+        <button type="button" class="btn btn btn-danger">フォローしない</button>
+        <% end %>
+        <% else %>
+        <td>
+        <%= link_to user_relationships_path(user), method: :post do %>
+        <button type="button" class="btn btn btn-primary">フォロー</button>
+        <% end %>
+        </td>
+        <% end %>
+        <% end %>
+        <!--↑フォロー機能-->
+        
       </tr>
     <% end %>
   </tbody>
